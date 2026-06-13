@@ -360,19 +360,28 @@ if st.button("⚡ Run Forecast"):
             "PromoInterval": promo_interval
         }
 
-        response = requests.post(
-            f"{BACKEND_URL}/predict",
-            json=payload
-        )
+        with st.spinner("Waking up backend & forecasting..."):
+            response = requests.post(
+                f"{BACKEND_URL}/predict",
+                json=payload,
+                timeout=60
+            )
 
-        predicted = response.json()["predicted_sales"]
+        if response.status_code != 200:
+            st.error(f"Backend error {response.status_code}: {response.text}")
+        else:
+            predicted = response.json()["predicted_sales"]
 
-        st.markdown(f"""
-        <div class="result-box">
-            <div class="result-label">Predicted Sales</div>
-            <div class="result-value">{predicted:.2f}</div>
-        </div>
-        """, unsafe_allow_html=True)
+            st.markdown(f"""
+            <div class="result-box">
+                <div class="result-label">Predicted Sales</div>
+                <div class="result-value">{predicted:.2f}</div>
+            </div>
+            """, unsafe_allow_html=True)
 
+    except requests.exceptions.Timeout:
+        st.error("Request timed out. The backend is waking up — please try again in 30 seconds.")
+    except requests.exceptions.ConnectionError:
+        st.error(f"Cannot connect to backend at {BACKEND_URL}. Check that the Render service is running.")
     except Exception as e:
         st.error(f"Error: {e}")
