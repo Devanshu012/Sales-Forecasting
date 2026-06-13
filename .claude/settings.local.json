@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(& \"C:\\\\Users\\\\devan\\\\Desktop\\\\5_DataScience_Project\\\\sales_forecasting\\\\venv\\\\Scripts\\\\python.exe\" --version 2>&1)",
+      "PowerShell(& \"C:\\\\Users\\\\devan\\\\Desktop\\\\5_DataScience_Project\\\\sales_forecasting\\\\venv\\\\Scripts\\\\pip.exe\" list 2>&1)",
+      "PowerShell(& \"C:\\\\Users\\\\devan\\\\Desktop\\\\5_DataScience_Project\\\\sales_forecasting\\\\venv\\\\Scripts\\\\jupyter.exe\" kernelspec list 2>&1)",
+      "PowerShell(c:\\\\Users\\\\devan\\\\Desktop\\\\5_DataScience_Project\\\\sales_forecasting\\\\venv\\\\Scripts\\\\pip.exe install --upgrade nbformat)",
+      "Bash(grep -r \"mlflow.set_tracking_uri\\\\|MLFLOW_TRACKING_URI\\\\|http://\\\\|localhost\" notebooks/*.ipynb)",
+      "Bash(grep -r \"C:\\\\\\\\\\\\\\\\\" . --include=\"*.py\")",
+      "Bash(python -c \"import sys; print\\(sys.version\\)\")"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# Logs
+logs/
+*.log
+
+# MLflow
+mlflow.db
+mlruns/
+
+# Environment variables
+.env
+
+# Models — ignore large/unused models, keep xgboost + pipeline
+backend/models/rf_model.pkl
+backend/models/dt_model.pkl
+
+# Data — ignore actual files, keep folder structure via .gitkeep
+data/raw/*.csv
+data/processed/*.csv
+data/predicted/*.csv
